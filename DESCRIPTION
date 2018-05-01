@@ -3,7 +3,7 @@ Type: Package
 Title: Demographic Tables
 Version: 0.1.0
 Author: Sean Cho
-Maintainer: Sean Cho <https://github.com/sean-cho>
+Maintainer: Sean Cho (https://github.com/sean-cho)
 Description: Create demographics tables for publication.
     Calculates and generates appropriate layout for export
     into tab-delimited files or HTML tables.

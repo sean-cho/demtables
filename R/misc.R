@@ -4,6 +4,8 @@
 .prettify <- function(x){
   ## Skip if all uppercase
   if(grepl("^[[:upper:]]+$", x)) return(x)
+  ## Skip if one
+  if(nchar(x) == 1) return(x)
   ## Process
   foo <- strsplit(x,'')[[1]]
   foo[1] <- toupper(foo[1])

@@ -40,6 +40,7 @@ dem_table <- function(dat, expr){
   ## Analysis
   demvars <- list()
   for(.v in .vars){
+    print(.v)
     demvars[[.v]] <- .dem_stats(dat[,.v], condition, prettify(.v))
   }
   demvars <- as.matrix(do.call(rbind, demvars))
@@ -48,7 +49,7 @@ dem_table <- function(dat, expr){
   if(inherits(condition, 'factor')){
     hc <- levels(condition)
   } else {
-    hc <- unique(condition)
+    hc <- as.character(unique(condition))
   }
   header <- c('', '', sort(sapply(hc, prettify)), 'pvalue')
   N <- c('N', '', table(dat[.cond]),'')
