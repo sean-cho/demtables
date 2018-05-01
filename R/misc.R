@@ -39,10 +39,16 @@ prettify <- function(x){
     }
     tb <- rbind(c(vname, rep('', ncol(tb) - 1)), tb)
   } else {
-    tb <- table(v, cond)
-    p <- fisher.test(tb)$p.value
-    tb <- cbind('', spread(as.data.frame(tb), cond, Freq)) %>%
-      mutate(v = as.character(v))
+    counttb <- table(v, cond)
+    p <- fisher.test(counttb)$p.value
+    proptb <- sprintf('%0.1f', prop.table(counttb)*100)
+    prtb <- paste0(counttb, ' (', proptb, ')')
+    dim(prtb) <- dim(counttb)
+    colnames(prtb) <- colnames(counttb)
+    rownames(prtb) <- rownames(counttb)
+    prtb <- as.table(prtb)
+    tb <- cbind('', spread(as.data.frame(prtb), Var2, Freq)) %>%
+      mutate(Var1 = as.character(Var1))
     colnames(tb) <- rep('', ncol(tb))
     tb <- as.matrix(tb)
     tb <- rbind(c(vname, rep('',ncol(tb)-1)), tb)
