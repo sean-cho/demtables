@@ -19,7 +19,7 @@ devtools::install_github('sean-cho/demtables')
 
 The main workhorse of the `demtables` package is the function `dem_table` which takes a `data.frame` and `expression` as an argument.
 
-```{r demtable, echo = TRUE}
+```{r demtable, echo = TRUE, warning=FALSE, message=FALSE}
 library(demtables)
 library(dplyr)
 library(survival)
@@ -31,7 +31,7 @@ ovarian %>%
 
 Alternatively, you could select specific variables.
 
-```{r demtable_sub, echo = TRUE}
+```{r demtable_sub, echo = TRUE, warning=FALSE, message=FALSE}
 ovarian %>% 
   mutate(resid.ds = ifelse(resid.ds == 1,'no','yes'), rx = factor(rx)) %>% 
   dem_table(rx ~ age + resid.ds)
@@ -39,7 +39,7 @@ ovarian %>%
 
 The `make_dem_table` and `view_dem_table` functions create HTML tables that will be displayed in the Viewer if you use RStudio. `make_dem_table` can be used directly in HTML Markdowns.
 
-```{r make_demtable, echo = TRUE}
+```{r make_demtable, echo = TRUE, warning=FALSE, message=FALSE}
 ovarian %>% 
   mutate(resid.ds = ifelse(resid.ds == 1,'no','yes'), rx = factor(rx)) %>% 
   make_dem_table(rx ~ age + resid.ds, 'Ovarian data')

@@ -21,32 +21,12 @@ The main workhorse of the `demtables` package is the function `dem_table` which 
 ``` r
 library(demtables)
 library(dplyr)
-```
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
-``` r
 library(survival)
 data(ovarian)
 ovarian %>% 
   mutate(resid.ds = ifelse(resid.ds == 1,'no','yes'), rx = factor(rx)) %>% 
   dem_table(rx ~ .)
 ```
-
-    ## Loading required package: tidyr
-
-    ## Loading required package: formula.tools
-
-    ## Warning: package 'formula.tools' was built under R version 3.4.4
 
     ##       [,1]       [,2]  [,3]             [,4]             [,5]    
     ##  [1,] ""         ""    "1"              "2"              "pvalue"
@@ -58,8 +38,8 @@ ovarian %>%
     ##  [7,] "Age"      ""    ""               ""               ""      
     ##  [8,] ""         ""    "55.73 (13.5)"   "56.60 (5.4)"    "0.83"  
     ##  [9,] "Resid.ds" ""    ""               ""               ""      
-    ## [10,] ""         "no"  "5"              "6"              "1.00"  
-    ## [11,] ""         "yes" "8"              "7"              ""      
+    ## [10,] ""         "no"  "5 (19.2)"       "6 (23.1)"       "1.00"  
+    ## [11,] ""         "yes" "8 (30.8)"       "7 (26.9)"       ""      
     ## [12,] "Ecog.ps"  ""    ""               ""               ""      
     ## [13,] ""         ""    "1.46 (0.5)"     "1.46 (0.5)"     "1.00"
 
@@ -77,8 +57,8 @@ ovarian %>%
     ## [3,] "Age"      ""    ""             ""            ""      
     ## [4,] ""         ""    "55.73 (13.5)" "56.60 (5.4)" "0.83"  
     ## [5,] "Resid.ds" ""    ""             ""            ""      
-    ## [6,] ""         "no"  "5"            "6"           "1.00"  
-    ## [7,] ""         "yes" "8"            "7"           ""
+    ## [6,] ""         "no"  "5 (19.2)"     "6 (23.1)"    "1.00"  
+    ## [7,] ""         "yes" "8 (30.8)"     "7 (26.9)"    ""
 
 The `make_dem_table` and `view_dem_table` functions create HTML tables that will be displayed in the Viewer if you use RStudio. `make_dem_table` can be used directly in HTML Markdowns.
 
@@ -88,9 +68,6 @@ ovarian %>%
   make_dem_table(rx ~ age + resid.ds, 'Ovarian data')
 ```
 
-    ## Loading required package: htmlTable
-
-<!--html_preserve-->
 <table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;">
 <thead>
 <tr>
@@ -178,10 +155,10 @@ Resid.ds
 no
 </td>
 <td style="padding-left: .5em; padding-right: .5em; background-color: #f7f7f7; text-align: center;">
-5
+5 (19.2)
 </td>
 <td style="padding-left: .5em; padding-right: .5em; background-color: #f7f7f7; text-align: center;">
-6
+6 (23.1)
 </td>
 <td style="padding-left: .5em; padding-right: .5em; background-color: #f7f7f7; text-align: center;">
 1.00
@@ -194,14 +171,13 @@ no
 yes
 </td>
 <td style="padding-left: .5em; padding-right: .5em; border-bottom: 2px solid grey; text-align: center;">
-8
+8 (30.8)
 </td>
 <td style="padding-left: .5em; padding-right: .5em; border-bottom: 2px solid grey; text-align: center;">
-7
+7 (26.9)
 </td>
 <td style="padding-left: .5em; padding-right: .5em; border-bottom: 2px solid grey; text-align: center;">
 </td>
 </tr>
 </tbody>
 </table>
-<!--/html_preserve-->
