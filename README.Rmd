@@ -21,6 +21,7 @@ The main workhorse of the `demtables` package is the function `dem_table` which 
 
 ```{r demtable, echo = TRUE}
 library(demtables)
+library(dplyr)
 library(survival)
 data(ovarian)
 ovarian %>% 

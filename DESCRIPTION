@@ -7,6 +7,11 @@ Maintainer: Sean Cho <sean.cho@jhmi.edu>
 Description: Create demographics tables for publication.
     Calculates and generates appropriate layout for export
     into tab-delimited files or HTML tables.
+Depends:
+  dplyr,
+  tidyr,
+  formula.tools,
+  htmlTables
 License: MIT
 Encoding: UTF-8
 LazyData: true
