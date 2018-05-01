@@ -25,14 +25,21 @@ library(survival)
 data(ovarian)
 ovarian %>% 
   mutate(resid.ds = ifelse(resid.ds == 1,'no','yes'), rx = factor(rx)) %>% 
-  dem_table(fustat ~ age + rx + resid.ds + ecog.ps)
+  dem_table(rx ~ .)
+```
+
+Alternatively, you could select specific variables.
+
+```{r demtable_sub, echo = TRUE}
+ovarian %>% 
+  mutate(resid.ds = ifelse(resid.ds == 1,'no','yes'), rx = factor(rx)) %>% 
+  dem_table(rx ~ age + resid.ds)
 ```
 
 The `make_dem_table` and `view_dem_table` functions create HTML tables that will be displayed in the Viewer if you use RStudio. `make_dem_table` can be used directly in HTML Markdowns.
 
 ```{r make_demtable, echo = TRUE}
-data(ovarian)
 ovarian %>% 
   mutate(resid.ds = ifelse(resid.ds == 1,'no','yes'), rx = factor(rx)) %>% 
-  make_dem_table(fustat ~ age + rx + resid.ds + ecog.ps, 'Ovarian data')
+  make_dem_table(rx ~ age + resid.ds, 'Ovarian data')
 ```

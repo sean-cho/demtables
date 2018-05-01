@@ -40,7 +40,6 @@ dem_table <- function(dat, expr){
   ## Analysis
   demvars <- list()
   for(.v in .vars){
-    print(.v)
     demvars[[.v]] <- .dem_stats(dat[,.v], condition, prettify(.v))
   }
   demvars <- as.matrix(do.call(rbind, demvars))
