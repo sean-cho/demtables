@@ -11,7 +11,7 @@ Depends:
   dplyr,
   tidyr,
   formula.tools,
-  htmlTables
+  htmlTable
 License: MIT
 Encoding: UTF-8
 LazyData: true
