@@ -41,7 +41,7 @@ prettify <- function(x){
   } else {
     counttb <- table(v, cond)
     p <- fisher.test(counttb)$p.value
-    proptb <- sprintf('%0.1f', prop.table(counttb)*100)
+    proptb <- sprintf('%0.1f', prop.table(counttb, margin = 2)*100)
     prtb <- paste0(counttb, ' (', proptb, ')')
     dim(prtb) <- dim(counttb)
     colnames(prtb) <- colnames(counttb)
