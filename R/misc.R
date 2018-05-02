@@ -53,9 +53,9 @@ prettify <- function(x){
     tb <- as.matrix(tb)
     tb <- rbind(c(vname, rep('',ncol(tb)-1)), tb)
     if(p < 0.01){
-      tb <- cbind(tb, c('', '< 0.01', ''))
+      tb <- cbind(tb, c('', '< 0.01', rep('', nrow(tb) - 2)))
     } else {
-      tb <- cbind(tb, c('', sprintf('%0.2f', p), ''))
+      tb <- cbind(tb, c('', sprintf('%0.2f', p), rep('', nrow(tb) - 2)))
     }
   }
   colnames(tb) <- paste('V',1:ncol(tb))
