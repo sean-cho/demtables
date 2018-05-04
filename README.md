@@ -1,10 +1,7 @@
 demtables
 ================
 
-R Markdown
-----------
-
-`demtables` is a simple package for making demographic tables from data.frames.
+`demtables` is a package for making simple demographic tables.
 
 ### Installation
 
@@ -15,6 +12,8 @@ devtools::install_github('sean-cho/demtables')
 ```
 
 ### Usage
+
+#### Make dem tables
 
 The main workhorse of the `demtables` package is the function `dem_table` which takes a `data.frame` and `expression` as an argument.
 
@@ -59,6 +58,8 @@ ovarian %>%
     ## [5,] "Resid.ds" ""    ""             ""            ""      
     ## [6,] ""         "no"  "5 (38.5)"     "6 (46.2)"    "1.00"  
     ## [7,] ""         "yes" "8 (61.5)"     "7 (53.8)"    ""
+
+#### HTML output with proper design
 
 The `make_dem_table` and `view_dem_table` functions create HTML tables that will be displayed in the Viewer if you use RStudio. `make_dem_table` can be used directly in HTML Markdowns.
 
