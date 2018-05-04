@@ -38,8 +38,8 @@ ovarian %>%
     ##  [7,] "Age"      ""    ""               ""               ""      
     ##  [8,] ""         ""    "55.73 (13.5)"   "56.60 (5.4)"    "0.83"  
     ##  [9,] "Resid.ds" ""    ""               ""               ""      
-    ## [10,] ""         "no"  "5 (19.2)"       "6 (23.1)"       "1.00"  
-    ## [11,] ""         "yes" "8 (30.8)"       "7 (26.9)"       ""      
+    ## [10,] ""         "no"  "5 (38.5)"       "6 (46.2)"       "1.00"  
+    ## [11,] ""         "yes" "8 (61.5)"       "7 (53.8)"       ""      
     ## [12,] "Ecog.ps"  ""    ""               ""               ""      
     ## [13,] ""         ""    "1.46 (0.5)"     "1.46 (0.5)"     "1.00"
 
@@ -57,8 +57,8 @@ ovarian %>%
     ## [3,] "Age"      ""    ""             ""            ""      
     ## [4,] ""         ""    "55.73 (13.5)" "56.60 (5.4)" "0.83"  
     ## [5,] "Resid.ds" ""    ""             ""            ""      
-    ## [6,] ""         "no"  "5 (19.2)"     "6 (23.1)"    "1.00"  
-    ## [7,] ""         "yes" "8 (30.8)"     "7 (26.9)"    ""
+    ## [6,] ""         "no"  "5 (38.5)"     "6 (46.2)"    "1.00"  
+    ## [7,] ""         "yes" "8 (61.5)"     "7 (53.8)"    ""
 
 The `make_dem_table` and `view_dem_table` functions create HTML tables that will be displayed in the Viewer if you use RStudio. `make_dem_table` can be used directly in HTML Markdowns.
 
@@ -155,10 +155,10 @@ Resid.ds
 no
 </td>
 <td style="padding-left: .5em; padding-right: .5em; background-color: #f7f7f7; text-align: center;">
-5 (19.2)
+5 (38.5)
 </td>
 <td style="padding-left: .5em; padding-right: .5em; background-color: #f7f7f7; text-align: center;">
-6 (23.1)
+6 (46.2)
 </td>
 <td style="padding-left: .5em; padding-right: .5em; background-color: #f7f7f7; text-align: center;">
 1.00
@@ -171,10 +171,10 @@ no
 yes
 </td>
 <td style="padding-left: .5em; padding-right: .5em; border-bottom: 2px solid grey; text-align: center;">
-8 (30.8)
+8 (61.5)
 </td>
 <td style="padding-left: .5em; padding-right: .5em; border-bottom: 2px solid grey; text-align: center;">
-7 (26.9)
+7 (53.8)
 </td>
 <td style="padding-left: .5em; padding-right: .5em; border-bottom: 2px solid grey; text-align: center;">
 </td>
