@@ -35,7 +35,9 @@ prettify <- function(x){
     })
     if(inherits(p,'try-error')) p <- NA
     cellval <- sprintf('%0.2f (%0.1f)', m, s)
-    if(p < 0.01){
+    if(is.na(p)) {
+      tb <- as.matrix(rbind(c('', '', cellval, 'NA')))
+    } else if(p < 0.01){
       tb <- as.matrix(rbind(c('', '', cellval, '< 0.01')))
     } else {
       tb <- as.matrix(rbind(c('', '', cellval, sprintf('%0.2f', p))))
@@ -56,10 +58,12 @@ prettify <- function(x){
     colnames(tb) <- rep('', ncol(tb))
     tb <- as.matrix(tb)
     tb <- rbind(c(vname, rep('',ncol(tb)-1)), tb)
-    if(p < 0.01){
-      tb <- cbind(tb, c('', '< 0.01', rep('', nrow(tb) - 2)))
+    if(is.na(p)) {
+      tb <- as.matrix(rbind(c('', '', cellval, 'NA')))
+    } else if(p < 0.01){
+      tb <- as.matrix(rbind(c('', '', cellval, '< 0.01')))
     } else {
-      tb <- cbind(tb, c('', sprintf('%0.2f', p), rep('', nrow(tb) - 2)))
+      tb <- as.matrix(rbind(c('', '', cellval, sprintf('%0.2f', p))))
     }
   }
   colnames(tb) <- paste('V',1:ncol(tb))
