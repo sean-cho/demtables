@@ -31,7 +31,8 @@ prettify <- function(x){
         summary(aov(v ~ cond))[[1]][,5][1]
       } else {
         t.test(v ~ cond)$p.value
-      })
+      }
+    })
     if(inherits(p,'try-error')) p <- NA
     cellval <- sprintf('%0.2f (%0.1f)', m, s)
     if(p < 0.01){
