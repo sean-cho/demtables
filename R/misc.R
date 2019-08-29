@@ -24,13 +24,15 @@ prettify <- function(x){
   require(tidyr)
   require(formula.tools)
   if(inherits(v,c('numeric','integer','double'))){
-    m <- tapply(v, cond, mean)
-    s <- tapply(v, cond, sd)
-    if(length(cond) > 2){
-      p <- summary(aov(v ~ cond))[[1]][,5][1]
-    } else {
-      p <- t.test(v ~ cond)$p.value
-    }
+    m <- tapply(v, cond, mean, na.rm = TRUE)
+    s <- tapply(v, cond, sd, na.rm = TRUE)
+    p <- try({
+      if(length(cond) > 2){
+        summary(aov(v ~ cond))[[1]][,5][1]
+      } else {
+        t.test(v ~ cond)$p.value
+      })
+    if(inherits(p,'try-error')) p <- NA
     cellval <- sprintf('%0.2f (%0.1f)', m, s)
     if(p < 0.01){
       tb <- as.matrix(rbind(c('', '', cellval, '< 0.01')))
@@ -40,7 +42,8 @@ prettify <- function(x){
     tb <- rbind(c(vname, rep('', ncol(tb) - 1)), tb)
   } else {
     counttb <- table(v, cond)
-    p <- fisher.test(counttb)$p.value
+    p <- try(fisher.test(counttb)$p.value)
+    if(inherits(p, 'try-error')) p <- NA
     proptb <- sprintf('%0.1f', prop.table(counttb, margin = 2)*100)
     prtb <- paste0(counttb, ' (', proptb, ')')
     dim(prtb) <- dim(counttb)
