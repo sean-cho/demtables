@@ -4,7 +4,7 @@
 \alias{dem_table}
 \title{Make base demographics table}
 \usage{
-dem_table(dat, expr, prettify = FALSE)
+dem_table(dat, expr, make_pretty = FALSE)
 }
 \arguments{
 \item{dat}{Data.frame containing classification and demographic variables.}

@@ -24,7 +24,7 @@
 #' @seealso \code{\link[demtables]{make_dem_table}}
 #'
 
-dem_table <- function(dat, expr, prettify = FALSE){
+dem_table <- function(dat, expr, make_pretty = FALSE){
   if(!inherits(dat, 'data.frame')) stop('x is not data.frame.')
   if(!inherits(expr, 'formula')) stop('Not a valid expression.')
   if(op(expr) != '~') stop('Not a valid expression.')
