@@ -4,13 +4,15 @@
 \alias{dem_table}
 \title{Make base demographics table}
 \usage{
-dem_table(dat, expr)
+dem_table(dat, expr, prettify = FALSE)
 }
 \arguments{
 \item{dat}{Data.frame containing classification and demographic variables.}
 
 \item{expr}{Expression of how to populate table. \code{cls ~ .} or
 \code{cls ~ var1 + var2}}
+
+\item{make_pretty}{Prettify the LHS and RHS names?}
 }
 \value{
 Data.frame of demographic table.

@@ -7,6 +7,7 @@
 #' @param dat Data.frame containing classification and demographic variables.
 #' @param expr Expression of how to populate table. \code{cls ~ .} or
 #'    \code{cls ~ var1 + var2}
+#' @param make_pretty Prettify the LHS and RHS names?
 #' @return Data.frame of demographic table.
 #'
 #' @details Generates demographic table from given expression.
@@ -23,7 +24,7 @@
 #' @seealso \code{\link[demtables]{make_dem_table}}
 #'
 
-dem_table <- function(dat, expr){
+dem_table <- function(dat, expr, prettify = FALSE){
   if(!inherits(dat, 'data.frame')) stop('x is not data.frame.')
   if(!inherits(expr, 'formula')) stop('Not a valid expression.')
   if(op(expr) != '~') stop('Not a valid expression.')
@@ -39,8 +40,14 @@ dem_table <- function(dat, expr){
 
   ## Analysis
   demvars <- list()
+  ## Make pretty variable (row) names for table?
+  if(make_pretty){
+    .vname <- prettify(.v)
+  } else {
+    .vname <- .v
+  }
   for(.v in .vars){
-    demvars[[.v]] <- .dem_stats(dat[,.v], condition, prettify(.v))
+    demvars[[.v]] <- .dem_stats(dat[,.v], condition, .vname)
   }
   demvars <- as.matrix(do.call(rbind, demvars))
 
@@ -50,7 +57,13 @@ dem_table <- function(dat, expr){
   } else {
     hc <- as.character(unique(condition))
   }
-  header <- c('', '', sort(sapply(hc, prettify)), 'pvalue')
+  ## Make pretty condition (column) names?
+  if(make_pretty){
+    .header <- sort(sapply(hc, prettify))
+  } else {
+    .header <- sort(hc)
+  }
+  header <- c('', '', .header, 'pvalue')
   N <- c('N', '', table(dat[.cond]),'')
   demvars <- rbind(header, N, demvars)
   rownames(demvars) <- NULL
