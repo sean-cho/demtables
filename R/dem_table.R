@@ -41,12 +41,13 @@ dem_table <- function(dat, expr, make_pretty = FALSE){
   ## Analysis
   demvars <- list()
   ## Make pretty variable (row) names for table?
-  if(make_pretty){
-    .vname <- prettify(.v)
-  } else {
-    .vname <- .v
-  }
+  
   for(.v in .vars){
+    if(make_pretty){
+      .vname <- prettify(.v)
+    } else {
+      .vname <- .v
+    }
     demvars[[.v]] <- .dem_stats(dat[,.v], condition, .vname)
   }
   demvars <- as.matrix(do.call(rbind, demvars))
